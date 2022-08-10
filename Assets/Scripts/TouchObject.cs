@@ -30,7 +30,7 @@ public class TouchObject : MonoBehaviour
             case TouchPhase.Ended:
 
             case TouchPhase.Canceled:
-                if (pressTime > 0.5f)
+                if (pressTime > 0.3f)
                 {
                     recycleTouchedObject();
                 }
@@ -49,7 +49,7 @@ public class TouchObject : MonoBehaviour
             var rig = hitInfo.collider.GetComponent<Rigidbody>();
             if (rig != null)
             {
-                float randomX = Random.Range(5f, 20f);
+                float randomX = Random.Range(10f, 20f);
                 Debug.Log(randomX);
                 hitInfo.transform.Translate(randomX, 0, 0);
 
