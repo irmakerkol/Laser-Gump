@@ -5,15 +5,13 @@ using UnityEngine;
 public class RotateLaser : MonoBehaviour
 {
     [SerializeField] GameObject laser;
-    private Camera cam;
     [SerializeField] private float rotateSpeed = 5f;
-    public float angle = 100f;
+    public float angle = 0.1f;
     private Quaternion targetRotation;
     private Quaternion initialRot;
     private void Start()
     {
         laser = GameObject.FindGameObjectWithTag("Laser");
-        cam = Camera.main;
         initialRot = transform.rotation;
     }
 
@@ -34,8 +32,7 @@ public class RotateLaser : MonoBehaviour
          void Swing()
          {
              
-             targetRotation = Quaternion.AngleAxis(angle, Vector3.forward * -1);
-             
+            targetRotation = Quaternion.AngleAxis(angle / 4, Vector3.forward * -1);
              
          }
     }
