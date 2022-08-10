@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class RotateLaser : MonoBehaviour
 {
-    private float pressTime = 0;
-
+    [SerializeField] GameObject laser;
     private Camera cam;
 
     private void Start()
     {
-      
+        laser = GameObject.FindGameObjectWithTag("Laser");
         cam = Camera.main;
     }
 
@@ -28,22 +27,13 @@ public class RotateLaser : MonoBehaviour
 
         switch (touch.phase)
         {
-
             case TouchPhase.Began:
-                pressTime = 0;
-                break;
 
-            case TouchPhase.Stationary:
-                pressTime += Time.deltaTime;
                 var ray = cam.ScreenToWorldPoint(touch.position);
                 Debug.Log("ray is: " + ray);
-                this.transform.LookAt(ray);
+                laser.transform.LookAt(ray);
                 break;
 
-            case TouchPhase.Ended:
-
-            case TouchPhase.Canceled:
-            break;
         }
     }
 
