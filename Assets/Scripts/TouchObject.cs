@@ -3,6 +3,14 @@ using UnityEngine;
 public class TouchObject : MonoBehaviour
 {
     private float pressTime = 0;
+    [SerializeField] GameObject laser;
+    private Camera cam;
+
+    private void Start()
+    {
+        laser = GameObject.FindGameObjectWithTag("Laser");
+        cam = Camera.main;
+    }
 
     void Update()
     {
@@ -21,10 +29,25 @@ public class TouchObject : MonoBehaviour
            
             case TouchPhase.Began:
                 pressTime = 0;
+                // Look to touch position yapmak istiyorum ama touch 3d olmadığı için yapamıyorum. Ne yapabilirim?
+                // Vector3 temp = new Vector3(touch.position.x, touch.position.y, 0);
+
+                //var ray = cam.ScreenToWorldPoint(touch.position);
+              //  Debug.Log("ray is: " + ray);
+                /*
+                Vector3 direction = ray - laser.transform.position;
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                laser.transform.rotation = Quaternion.Lerp(laser.transform.rotation, rotation, 5f * Time.deltaTime);
+                */
+              //  laser.transform.LookAt(ray);
+
                 break;
 
             case TouchPhase.Stationary:
                 pressTime += Time.deltaTime;
+                var ray = cam.ScreenToWorldPoint(touch.position);
+                Debug.Log("ray is: " + ray);
+                laser.transform.LookAt(ray);
                 break;
 
             case TouchPhase.Ended:
@@ -56,4 +79,6 @@ public class TouchObject : MonoBehaviour
             }
         }
     }
+
+   
 }
