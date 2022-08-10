@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T: Component
+public class Singleton<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
 
@@ -10,10 +10,10 @@ public class Singleton<T> : MonoBehaviour where T: Component
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = FindObjectOfType<T>();
-                if(instance == null)
+                if (instance == null)
                 {
                     GameObject newGameObject = new GameObject();
                     _instance = newGameObject.AddComponent<T>();

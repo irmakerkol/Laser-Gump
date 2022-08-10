@@ -7,21 +7,22 @@ using UnityEngine.SceneManagement;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] float forwardSpeed;
-    private bool gameStarted = false;
 
+    void Start(){
+        GameManager.instance.gameStarted = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
      
-        if (Input.touchCount > 0 && !gameStarted)
+        if (Input.touchCount > 0 && !GameManager.instance.gameStarted)
         {
-           gameStarted = true;
+            GameManager.instance.gameStarted = true;
         }
-        if (gameStarted)
+        if (GameManager.instance.gameStarted)
         {
             this.transform.Translate(forwardSpeed * Time.deltaTime, 0, 0);
-
         }
 
     }
@@ -30,8 +31,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (coll.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Öldün");
-            gameStarted = false;
+            GameManager.instance.gameStarted = false;
             SceneManager.LoadSceneAsync("SampleScene");
 
         }
