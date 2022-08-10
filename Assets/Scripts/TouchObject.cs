@@ -20,26 +20,17 @@ public class TouchObject : MonoBehaviour
         {
            
             case TouchPhase.Began:
-                Debug.Log("Başladı");
                 pressTime = 0;
                 break;
 
             case TouchPhase.Stationary:
-                Debug.Log("Stat");
                 pressTime += Time.deltaTime;
                 break;
 
             case TouchPhase.Ended:
-                Debug.Log("Ended " + pressTime);
-                if (pressTime > 0.8f)
-                {
-                    recycleTouchedObject();
-                }
-                pressTime = 0;
-                break;
+
             case TouchPhase.Canceled:
-                Debug.Log("Cancelled " + pressTime);
-                if (pressTime > 0.8f)
+                if (pressTime > 0.5f)
                 {
                     recycleTouchedObject();
                 }
@@ -58,7 +49,9 @@ public class TouchObject : MonoBehaviour
             var rig = hitInfo.collider.GetComponent<Rigidbody>();
             if (rig != null)
             {
-                hitInfo.transform.Translate(100f, 0, 0);
+                float randomX = Random.Range(10f, 30f);
+                Debug.Log(randomX);
+                hitInfo.transform.Translate(randomX, 0, 0);
 
             }
         }
