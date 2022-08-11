@@ -8,17 +8,13 @@ public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] float forwardSpeed;
 
-    void Start(){
-        GameManager.instance.gameStarted = false;
-    }
-
     // Update is called once per frame
     void Update()
     {
-     
+    
         if (Input.touchCount > 0 && !GameManager.instance.gameStarted)
         {
-            GameManager.instance.gameStarted = true;
+            GameManager.instance.startGame();
         }
         if (GameManager.instance.gameStarted)
         {
@@ -31,7 +27,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (coll.gameObject.tag == "Obstacle")
         {
-            GameManager.instance.gameStarted = false;
+            GameManager.instance.endGame();
             SceneManager.LoadSceneAsync("SampleScene");
 
         }
