@@ -3,6 +3,7 @@ using UnityEngine;
 public class TouchObject : MonoBehaviour
 {
     private float pressTime = 0;
+    [SerializeField] private AudioClip woodDestClip;
 
     void Update()
     {
@@ -51,6 +52,7 @@ public class TouchObject : MonoBehaviour
             {
                 int randomX = Random.Range(10, 20);
                 hitInfo.transform.Translate(randomX, 0, 0);
+                AudioManager.instance.playSound(woodDestClip);
 
             }
         }
