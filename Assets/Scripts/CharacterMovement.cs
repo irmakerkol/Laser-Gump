@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] float forwardSpeed;
+    [SerializeField] GameObject road;
+    [SerializeField] GameObject road2;
 
     // Update is called once per frame
     void Update()
@@ -29,6 +31,15 @@ public class CharacterMovement : MonoBehaviour
         {
             GameManager.instance.endGame();
             SceneManager.LoadSceneAsync("SampleScene");
+        }
+        if (coll.gameObject.tag == "Informer1")
+        {
+            road.transform.position = new Vector3(road.transform.position.x + 400, road.transform.position.y, road.transform.position.z);
+        }
+
+        if (coll.gameObject.tag == "Informer2")
+        {
+            road2.transform.position = new Vector3(road2.transform.position.x + 400, road2.transform.position.y, road2.transform.position.z);
         }
     }
 }

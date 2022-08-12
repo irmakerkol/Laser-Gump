@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Laser
+  - Informer1
+  - Informer2
   layers:
   - Default
   - TransparentFX
