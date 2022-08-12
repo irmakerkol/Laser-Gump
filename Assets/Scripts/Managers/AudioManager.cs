@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    [SerializeField] private AudioSource musicSource, effectSource, levelUpSource;
+    [SerializeField] private AudioSource musicSource, effectSource, destroySource;
 
     public void playSound(AudioClip clip)
     {
         effectSource.PlayOneShot(clip);
     }
+
 }

@@ -3,7 +3,9 @@ using UnityEngine;
 public class TouchObject : MonoBehaviour
 {
     private float pressTime = 0;
-    [SerializeField] private AudioClip woodDestClip;
+
+    private int countDestroyedObject = 0;
+    [SerializeField] private AudioClip woodDestClip, levelClip;
 
     void Update()
     {
@@ -51,9 +53,20 @@ public class TouchObject : MonoBehaviour
             if (rig != null)
             {
                 int randomX = Random.Range(10, 20);
-                hitInfo.transform.Translate(randomX, 0, 0);
-                AudioManager.instance.playSound(woodDestClip);
-
+                if(LevelManager.instance.level == 0 && countDestroyedObject != 10){
+                    countDestroyedObject++;
+                    hitInfo.transform.Translate(randomX, 0, 0);
+                    AudioManager.instance.playSound(woodDestClip);
+                } else if(countDestroyedObject == 10){
+                    LevelManager.instance.levelUp();
+                    AudioManager.instance.playSound(levelClip);
+                    countDestroyedObject ++;
+                    LevelManager.instance.level = 1;
+                } else if(LevelManager.instance.level == 1){
+                    hitInfo.transform.Translate(randomX, 0, 0);
+                    AudioManager.instance.playSound(woodDestClip);
+                }
+             
             }
         }
     }

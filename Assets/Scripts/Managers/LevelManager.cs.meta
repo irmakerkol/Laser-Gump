@@ -3,7 +3,13 @@ guid: 20c7f9e1a7931470a8b75627c8ded864
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - levelUpEffect: {fileID: 8300000, guid: 5c3b71f6331ea44469a49e1ba927d607, type: 3}
+  - obstacle1Level1: {instanceID: 0}
+  - obstacle2Level1: {instanceID: 0}
+  - obstacle1Level2: {instanceID: 0}
+  - obstacle2Level2: {instanceID: 0}
+  - obstacle3Level2: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
