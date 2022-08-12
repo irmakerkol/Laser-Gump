@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    [SerializeField] private AudioSource musicSource, effectSource;
+    [SerializeField] private AudioSource musicSource, effectSource, levelUpSource;
 
     public void playSound(AudioClip clip)
     {

@@ -29,8 +29,6 @@ public class CharacterMovement : MonoBehaviour
         {
             GameManager.instance.endGame();
             SceneManager.LoadSceneAsync("SampleScene");
-
         }
     }
-
 }

@@ -11,6 +11,13 @@ public class GameManager : Singleton<GameManager>
         gameStarted = false;
     }
 
+    void Update(){
+        if (ScoreManager.instance.score > 60)
+        {
+            LevelManager.instance.levelUp();
+        }
+    }
+
     public void startGame(){
         gameStarted = true;
         ScoreManager.instance.scoreIncreasing = true;
