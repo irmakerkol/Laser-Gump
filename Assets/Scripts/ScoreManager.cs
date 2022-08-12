@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : Singleton<ScoreManager>
 {
-    public TextMeshPro scoreText;
-    public TextMeshPro remainingToHighScore;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI remainingToHighScore;
 
-    public float score;
+    public float score; 
+    
     public float highScore;
 
     public float pointsPerSecond;
     public bool scoreIncreasing;
 
+    void Start()
+    {
+        if(PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetFloat("HighScore", highScore);
+        }
+        else highScore = 0f;
+    }
    
 
     // Update is called once per frame
@@ -23,8 +32,9 @@ public class ScoreManager : MonoBehaviour
         setHighScore();
         setTexts();
     }
+    
 
-    void increaseScore()
+    public void increaseScore()
     {
         if (scoreIncreasing)
         {
@@ -32,18 +42,24 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void setHighScore()
+    public void setHighScore()
     {
         if (score > highScore)
         {
             highScore = score;
+            PlayerPrefs.SetFloat("HighScore", highScore);
+
         }
     }
 
-    void setTexts()
+    public void setTexts()
     {
         scoreText.text = "" + Mathf.Round(score);
-        remainingToHighScore.text = Mathf.Round(highScore - score) + "Remaining to HS";
+        if(highScore > score){
+            remainingToHighScore.text = Mathf.Round(highScore - score) + " Remaining to HS";
+        }else {
+            remainingToHighScore.text = "New High Score!";
+        }
     }
 
 
