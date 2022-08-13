@@ -52,17 +52,19 @@ public class TouchObject : MonoBehaviour
             var rig = hitInfo.collider.GetComponent<Rigidbody>();
             if (rig != null)
             {
-                int randomX = Random.Range(10, 20);
-                if(LevelManager.instance.level == 0 && countDestroyedObject != 10){
+                if(LevelManager.instance.level == 0 && countDestroyedObject != 15){
+                    int randomX = Random.Range(10, 20);
                     countDestroyedObject++;
                     hitInfo.transform.Translate(randomX, 0, 0);
                     AudioManager.instance.playSound(woodDestClip);
-                } else if(countDestroyedObject == 10){
+                } else if(countDestroyedObject == 15){
+                    int randomX = Random.Range(10, 20);
                     LevelManager.instance.levelUp();
                     AudioManager.instance.playSound(levelClip);
                     countDestroyedObject ++;
                     LevelManager.instance.level = 1;
                 } else if(LevelManager.instance.level == 1){
+                    int randomX = Random.Range(5, 15);
                     hitInfo.transform.Translate(randomX, 0, 0);
                     AudioManager.instance.playSound(woodDestClip);
                 }
