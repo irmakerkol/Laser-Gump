@@ -54,12 +54,15 @@ public class TouchObject : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo))
         {
             var rig = hitInfo.collider.GetComponent<Rigidbody>();
+            var name = hitInfo.collider.name;
             if (rig != null)
             {
                 if(LevelManager.instance.level == 0 && countDestroyedObject != 15){
                     int randomZ = Random.Range(10, 20);
                     countDestroyedObject++;
-                    hitInfo.transform.Translate(0, 0, -randomZ);
+                    if(name != "informer"){
+                        hitInfo.transform.Translate(0, 0, -randomZ);
+                    }
                     AudioManager.instance.playSound(woodDestClip);
                 } else if(countDestroyedObject == 15){
                     LevelManager.instance.levelUp();
@@ -68,7 +71,10 @@ public class TouchObject : MonoBehaviour
                     LevelManager.instance.level = 1;
                 } else if(LevelManager.instance.level == 1){
                     int randomY = Random.Range(5, 15);
-                    hitInfo.transform.Translate(0, randomY, 0);
+                    if (name != "informer")
+                    {
+                        hitInfo.transform.Translate(0, randomY, 0);
+                    }
                     AudioManager.instance.playSound(woodDestClip);
                 }
              
