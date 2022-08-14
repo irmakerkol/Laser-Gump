@@ -7,6 +7,10 @@ public class TouchObject : MonoBehaviour
     private int countDestroyedObject = 0;
     [SerializeField] private AudioClip woodDestClip, levelClip;
 
+
+    void Start(){
+
+    }
     void Update()
     {
         moveAfterLongTouch();
@@ -53,19 +57,18 @@ public class TouchObject : MonoBehaviour
             if (rig != null)
             {
                 if(LevelManager.instance.level == 0 && countDestroyedObject != 15){
-                    int randomX = Random.Range(10, 20);
+                    int randomZ = Random.Range(10, 20);
                     countDestroyedObject++;
-                    hitInfo.transform.Translate(randomX, 0, 0);
+                    hitInfo.transform.Translate(0, 0, -randomZ);
                     AudioManager.instance.playSound(woodDestClip);
                 } else if(countDestroyedObject == 15){
-                    int randomX = Random.Range(10, 20);
                     LevelManager.instance.levelUp();
                     AudioManager.instance.playSound(levelClip);
                     countDestroyedObject ++;
                     LevelManager.instance.level = 1;
                 } else if(LevelManager.instance.level == 1){
-                    int randomX = Random.Range(5, 15);
-                    hitInfo.transform.Translate(randomX, 0, 0);
+                    int randomY = Random.Range(5, 15);
+                    hitInfo.transform.Translate(0, randomY, 0);
                     AudioManager.instance.playSound(woodDestClip);
                 }
              

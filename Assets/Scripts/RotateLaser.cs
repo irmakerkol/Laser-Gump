@@ -25,14 +25,14 @@ public class RotateLaser : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, initialRot, rotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, initialRot, rotateSpeed * 10 * Time.deltaTime);
         }
 
 
          void Swing()
          {
-             
-            targetRotation = Quaternion.AngleAxis(angle / 4, Vector3.forward * -1);
+
+            targetRotation = Quaternion.AngleAxis(angle / -4, Vector3.down ); 
              
          }
     }

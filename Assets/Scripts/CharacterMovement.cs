@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour
         }
         if (GameManager.instance.gameStarted)
         {
-            this.transform.Translate(forwardSpeed * Time.deltaTime, 0, 0);
+            this.transform.Translate(0, 0, forwardSpeed * Time.deltaTime);
         }
 
     }
