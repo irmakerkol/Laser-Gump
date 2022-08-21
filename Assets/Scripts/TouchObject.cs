@@ -62,8 +62,8 @@ public class TouchObject : MonoBehaviour
                     countDestroyedObject++;
                     if(name != "informer"){
                         hitInfo.transform.Translate(0, 0, -randomZ);
+                        AudioManager.instance.playSound(woodDestClip);
                     }
-                    AudioManager.instance.playSound(woodDestClip);
                 } else if(countDestroyedObject == 15){
                     LevelManager.instance.levelUp();
                     AudioManager.instance.playSound(levelClip);
