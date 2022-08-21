@@ -155,6 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.UdoGamesInternship.LaserGump
     iPhone: com.UdoGamesInternship.LaserGump
   buildNumber:
     Standalone: 0
@@ -273,7 +274,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+      m_Icon: {fileID: 2800000, guid: b0bd4979cc43247099095a1c63c4f1af, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
